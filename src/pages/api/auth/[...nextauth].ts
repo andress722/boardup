@@ -7,16 +7,16 @@ import firebase from "../../../services/firebaseConnection"
 export default NextAuth({
   
   providers: [
+    
     GithubProvider({
       clientId: process.env.GITHUB_CLIENTE_ID,
       clientSecret: process.env.GITHUB_CLIENTE_SECRET,
 
-
-
-
+     
     }),
-  ],
 
+  ],
+  
   callbacks:{
    async session({session, token, user}){
    
@@ -36,8 +36,8 @@ export default NextAuth({
           ...session,
           id: token.sub,
           vip: lastDonate ? true : false,
-          lastDonate: lastDonate
-       
+          lastDonate: lastDonate,
+          
         }
       }catch{
         return{
